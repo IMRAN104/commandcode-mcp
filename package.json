@@ -1,0 +1,54 @@
+{
+  "name": "commandcode-mcp",
+  "version": "2.0.0",
+  "description": "MCP server that brings Command Code's codebase intelligence into Claude Desktop, VS Code, Cursor, and any MCP-compatible AI tool. 10 tools for querying code, continuing conversations, learning coding style, and managing agent skills — all from chat.",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "commandcode-mcp": "build/index.js"
+  },
+  "files": [
+    "build/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
+    "start": "node build/index.js",
+    "dev": "tsc && node build/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "command-code",
+    "cmc",
+    "ai",
+    "coding-agent",
+    "claude",
+    "codebase",
+    "code-analysis",
+    "developer-tools"
+  ],
+  "author": "Imran",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IMRAN104/commandcode-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IMRAN104/commandcode-mcp/issues"
+  },
+  "homepage": "https://github.com/IMRAN104/commandcode-mcp#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
+}
