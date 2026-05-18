@@ -1,7 +1,7 @@
 {
   "name": "commandcode-mcp",
   "version": "2.0.0",
-  "description": "MCP server that brings Command Code's codebase intelligence into Claude Desktop, VS Code, Cursor, and any MCP-compatible AI tool. 10 tools for querying code, continuing conversations, learning coding style, and managing agent skills — all from chat.",
+  "description": "MCP server that brings Command Code's codebase intelligence into Claude Desktop, VS Code, Cursor, and any MCP-compatible AI tool. 6 tools for querying code, continuing conversations, resuming sessions, learning coding style, and managing taste profiles — all from chat.",
   "type": "module",
   "main": "build/index.js",
   "bin": {
@@ -17,7 +17,8 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "start": "node build/index.js",
-    "dev": "tsc && node build/index.js"
+    "dev": "tsc && node build/index.js",
+    "test": "vitest --run"
   },
   "keywords": [
     "mcp",
@@ -45,10 +46,13 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.9.0"
+    "@modelcontextprotocol/sdk": "~1.9.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
-    "typescript": "^5.8.2"
+    "fast-check": "^3.23.2",
+    "typescript": "^5.8.2",
+    "vitest": "^3.2.4"
   }
 }
