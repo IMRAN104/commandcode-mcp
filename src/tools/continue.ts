@@ -65,7 +65,7 @@ export function registerContinueTool(
       // Create streaming context if streaming is enabled
       let onChunk: ((chunk: string) => void) | undefined;
       if (params.stream) {
-        const progressToken = extra?._meta?.progressToken;
+        const progressToken = (extra as any)?._meta?.progressToken as string | number | undefined;
         const streamingContext = createStreamingContext(server, progressToken);
         const startTime = Date.now();
         onChunk = (chunk: string) => {
