@@ -51,7 +51,7 @@ export class CommandCodeMcpServer {
     checkCommandCodeAvailable().then((available) => {
       if (!available) {
         console.error(
-          "WARNING: CommandCode CLI (cmc) not found. Install with: npm install -g command-code"
+          "WARNING: CommandCode CLI not found. Install with: npm install -g command-code"
         );
       }
     });

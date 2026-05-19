@@ -7,7 +7,7 @@ Thanks for helping improve CommandCode MCP. This doc covers bug reports, feature
 1. Check [existing issues](https://github.com/IMRAN104/commandcode-mcp/issues) to avoid duplicates.
 2. Include:
    - **MCP server version** (`commandcode-mcp --version` if available, or `npm list -g commandcode-mcp`)
-   - **Command Code version** (`cmc --version`)
+   - **Command Code version** (`commandcode --version`)
    - **Environment**: OS, Node version (`node -v`), MCP client (Claude Desktop, VS Code, Cursor)
    - **Steps to reproduce** — exact query or tool call that failed
    - **Expected vs actual behavior**
@@ -18,7 +18,7 @@ Thanks for helping improve CommandCode MCP. This doc covers bug reports, feature
 Open an issue with:
 - What problem the feature solves
 - How you'd use it
-- Whether it maps to an existing `cmc` CLI flag or would need coordination with Command Code
+- Whether it maps to an existing CommandCode CLI flag or would need coordination with Command Code
 
 ## Pull Requests
 

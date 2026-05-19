@@ -4,7 +4,7 @@
  * Resolution order:
  * 1. COMMANDCODE_PATH environment variable (if set, use it directly)
  * 2. Global npm install path (Windows APPDATA)
- * 3. Fallback: `cmd /c cmc` (Windows) or `cmc` (Unix)
+ * 3. Fallback: `commandcode` (via PATH)
  *
  * Validates: Requirements 1.3, 1.4, 1.7, 13.1, 13.2, 13.5
  */
@@ -28,7 +28,7 @@ let cachedResolvedPath: ResolvedCommand | null = null;
  * Checks in order:
  * 1. COMMANDCODE_PATH env var
  * 2. Global npm install path (Windows APPDATA/npm/node_modules/command-code/dist/index.mjs)
- * 3. Fallback: cmd /c cmc (Windows) or cmc (Unix)
+ * 3. Fallback: commandcode (via PATH)
  *
  * The result is cached for reuse across all tool invocations.
  */
@@ -59,8 +59,8 @@ export function resolveCommandCodePath(): ResolvedCommand {
     return cachedResolvedPath;
   }
 
-  // 3. Fallback: cmc via PATH (shell: true in executor handles PATH resolution on Windows)
-  cachedResolvedPath = { command: "cmc", args: [] };
+  // 3. Fallback: commandcode via PATH
+  cachedResolvedPath = { command: "commandcode", args: [] };
   return cachedResolvedPath;
 }
 

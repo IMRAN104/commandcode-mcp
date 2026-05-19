@@ -21,9 +21,9 @@ describe("resolveCommandCodePath", () => {
   });
 
   it("should use COMMANDCODE_PATH env var when set", () => {
-    process.env.COMMANDCODE_PATH = "/custom/path/to/cmc";
+    process.env.COMMANDCODE_PATH = "/custom/path/to/commandcode";
     const result = resolveCommandCodePath();
-    expect(result.command).toBe("/custom/path/to/cmc");
+    expect(result.command).toBe("/custom/path/to/commandcode");
     expect(result.args).toEqual([]);
   });
 
@@ -39,7 +39,7 @@ describe("resolveCommandCodePath", () => {
     expect(second.command).toBe("/first/path");
   });
 
-  it("should fall back to cmc via PATH when no env var or npm path", () => {
+  it("should fall back to commandcode via PATH when no env var or npm path", () => {
     delete process.env.COMMANDCODE_PATH;
     delete process.env.APPDATA;
 
@@ -47,8 +47,8 @@ describe("resolveCommandCodePath", () => {
 
     const result = resolveCommandCodePath();
 
-    // Should always use "cmc" directly (shell: false in executor, PATH handles resolution)
-    expect(result.command).toBe("cmc");
+    // Should always use "commandcode" directly (PATH handles resolution)
+    expect(result.command).toBe("commandcode");
     expect(result.args).toEqual([]);
   });
 
