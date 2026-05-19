@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 /**
  * Entry point for the CommandCode MCP Server.
- * This file will be fully wired up in task 7.2.
- * The old monolithic implementation has been removed in favor of the modular architecture.
+ *
+ * Validates: Requirement 14.4
  */
 
-// Placeholder — the full entry point will be implemented in task 7.2
-export {};
+import { CommandCodeMcpServer } from "./server.js";
+
+const server = new CommandCodeMcpServer();
+server.run().catch((err) => {
+  console.error(`Fatal: ${err.message}`);
+  process.exit(1);
+});

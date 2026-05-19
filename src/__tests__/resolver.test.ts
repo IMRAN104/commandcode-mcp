@@ -39,35 +39,17 @@ describe("resolveCommandCodePath", () => {
     expect(second.command).toBe("/first/path");
   });
 
-  it("should fall back to cmd /c cmc on Windows when no env var or npm path", () => {
+  it("should fall back to cmc via PATH when no env var or npm path", () => {
     delete process.env.COMMANDCODE_PATH;
     delete process.env.APPDATA;
 
-    // Mock platform as Windows
-    const originalPlatform = Object.getOwnPropertyDescriptor(process, "platform");
-    Object.defineProperty(process, "platform", { value: "win32" });
-
-    // Re-import to pick up IS_WINDOWS change — but since IS_WINDOWS is imported
-    // from constants at module load time, we test the fallback logic directly.
-    // For this test, we rely on the current platform behavior.
     clearResolvedPathCache();
 
     const result = resolveCommandCodePath();
 
-    // On the actual test platform (Windows), it should use cmd /c cmc
-    // On Unix CI, it would use "cmc" directly
-    if (process.platform === "win32") {
-      expect(result.command).toBe("cmd");
-      expect(result.args).toEqual(["/c", "cmc"]);
-    } else {
-      expect(result.command).toBe("cmc");
-      expect(result.args).toEqual([]);
-    }
-
-    // Restore platform
-    if (originalPlatform) {
-      Object.defineProperty(process, "platform", originalPlatform);
-    }
+    // Should always use "cmc" directly (shell: false in executor, PATH handles resolution)
+    expect(result.command).toBe("cmc");
+    expect(result.args).toEqual([]);
   });
 
   it("should return a ResolvedCommand with command and args properties", () => {

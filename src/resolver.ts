@@ -59,10 +59,8 @@ export function resolveCommandCodePath(): ResolvedCommand {
     return cachedResolvedPath;
   }
 
-  // 3. Fallback: cmd /c cmc on Windows, cmc on Unix
-  cachedResolvedPath = IS_WINDOWS
-    ? { command: "cmd", args: ["/c", "cmc"] }
-    : { command: "cmc", args: [] };
+  // 3. Fallback: cmc via PATH (shell: true in executor handles PATH resolution on Windows)
+  cachedResolvedPath = { command: "cmc", args: [] };
   return cachedResolvedPath;
 }
 

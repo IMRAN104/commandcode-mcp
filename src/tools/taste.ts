@@ -34,8 +34,8 @@ export function registerTasteTool(server: McpServer): void {
       // Validate timeout
       const timeoutSeconds = validateTimeoutSeconds(params.timeout_seconds);
 
-      // Build args: taste
-      const args: string[] = ["taste"];
+      // Build args: taste list
+      const args: string[] = ["taste", "list"];
 
       // Execute CommandCode CLI
       const result = await executeCommandCode({

@@ -99,7 +99,7 @@ export async function executeCommandCode(
       child = spawn(command, finalArgs, {
         cwd: options.cwd,
         stdio: "pipe",
-        shell: IS_WINDOWS,
+        shell: false,  // Never use shell — resolver handles PATH resolution
       });
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
