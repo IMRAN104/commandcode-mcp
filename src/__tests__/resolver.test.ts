@@ -40,8 +40,13 @@ describe("resolveCommandCodePath", () => {
   });
 
   it("should fall back to commandcode via PATH when no env var or npm path", () => {
+    // Strip every source the resolver consults so we deterministically
+    // exercise the final literal fallback — independent of whether the
+    // test host actually has command-code installed.
     delete process.env.COMMANDCODE_PATH;
     delete process.env.APPDATA;
+    delete process.env.PATH;
+    delete process.env.HOME;
 
     clearResolvedPathCache();
 
