@@ -1,6 +1,6 @@
 {
   "name": "commandcode-mcp",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "MCP server that brings Command Code's codebase intelligence into Claude Desktop, VS Code, Cursor, and any MCP-compatible AI tool. 6 tools for querying code, continuing conversations, resuming sessions, learning coding style, and managing taste profiles — all from chat.",
   "type": "module",
   "main": "build/index.js",
