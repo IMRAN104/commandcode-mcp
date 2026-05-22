@@ -45,7 +45,7 @@ function findOnPath(name: string): string | null {
     ? (process.env.PATHEXT ?? ".COM;.EXE;.BAT;.CMD").split(";")
     : [""];
 
-  for (const dir of pathEnv.split(delimiter)) {
+  for (const dir of pathEnv.split(IS_WINDOWS ? ";" : delimiter)) {
     if (!dir) continue;
     for (const ext of exts) {
       const candidate = join(dir, name + ext);

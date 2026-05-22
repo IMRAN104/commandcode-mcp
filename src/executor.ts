@@ -9,7 +9,6 @@ import { ExecutionOptions, CommandCodeResult } from "./types.js";
 import { resolveCommandCodePath } from "./resolver.js";
 import { executeMock } from "./mock.js";
 import {
-  IS_WINDOWS,
   MAX_PARTIAL_OUTPUT_CHARS,
   STREAM_CHUNK_INTERVAL_MS,
 } from "./constants.js";
@@ -19,7 +18,7 @@ import {
  *
  * - Checks COMMANDCODE_MOCK env var and delegates to mock executor if set.
  * - Resolves the CLI binary path via the resolver module.
- * - Spawns the process with shell: true on Windows, shell: false on Unix.
+ * - Spawns the process with shell: false on all platforms (resolver handles PATH/shim resolution).
  * - Always includes `--skip-onboarding` in the args.
  * - Applies timeout via AbortController + setTimeout.
  * - On timeout: SIGTERM → wait 2s → SIGKILL → collect partial output (up to 10,000 chars).
